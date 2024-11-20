@@ -1,0 +1,110 @@
+// ---------------------------------------------------------------------
+//  SCSS Settings
+// ---------------------------------------------------------------------
+
+
+// ----------------------------------------
+// Fonts
+// ----------------------------------------
+
+// 300, 400, 500, 600
+$sans-serif: "Instrument Sans", sans-serif;
+$ss: $sans-serif;
+
+$serif: "Instrument Serif", serif;
+
+$mono: "Roboto Mono", monospace;
+
+
+// ----------------------------------------
+// Font Size/ Line Height
+// ----------------------------------------
+$main-font: $ss;
+$base-font-size: 16px;
+$base-line-height: 1.5;
+
+
+// ----------------------------------------
+// Colors
+// ----------------------------------------
+
+$brand: var(--color-brand);
+$brand-dark:var(--color-brand-dark);
+
+$light: var(--color-light);
+$dark: var(--color-dark);
+
+$dark-blue: var(--color-dark-blue);
+$gray: var(--color-dark);
+
+$gray-dark: $dark;
+
+$blue-gray: var(--color-blue-gray);
+
+
+$blue: var(--color-blue);
+$blue-light: var(--color-blue-light);
+
+$black: #11141F;
+$white: #ffffff;
+
+$border-color: #EBEEF4;
+$border: $border-color;
+
+$red: #FF5C5C;
+
+$error: $red;
+
+$results-gradient: linear-gradient(90deg, #FF5C5C 5%, #FFB024 25%, #12CA98 50%, #00926B 75%, #034EA2 100%);
+
+
+// ----------------------------------------
+// Breakpoints
+// ----------------------------------------
+
+$xxlarge: 1800px;
+$xlarge: 1344px;
+$large: 1012px;
+$medium: 782px;
+$small: 544px;
+
+$content-width: 1344px;
+$wide-content: 1680px;
+$width-narrow: 880px;
+
+
+$spacing1: var(--spacing-1);
+$spacing2: var(--spacing-2);
+$spacing3: var(--spacing-3);
+$spacing4: var(--spacing-4);
+$spacing5: $spacing4;
+
+
+@mixin start-at($device-width) {
+  @media (min-width: $device-width) {
+    @content;
+  }
+}
+
+@mixin stop-at($device-width) {
+  @media (max-width: $device-width - 1) {
+    @content;
+  }
+}
+
+
+// ----------------------------------------
+// Global Variables
+// ----------------------------------------
+
+$header-breakpoint: 1200px;
+
+$transition-speed: 0.4s;
+$transition: $transition-speed ease;
+// cuz I no type good
+$trans: $transition;
+
+$wrapper-percentage: 90%;
+$wrapper-width: $content-width;
+//$wrapper-padding: (100% - $wrapper-percentage) / 2;
+$wrapper-padding: calc((100% - $wrapper-percentage) / 2);

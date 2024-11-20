@@ -1,0 +1,113 @@
+// ---------------------------------------------------------------------
+//
+// ---------------------------------------------------------------------
+
+.wp-block-cover {
+  padding: 120px 0 120px !important;
+}
+
+.wp-block-cover__inner-container {
+  max-width: $width-standard !important;
+  max-width: var(--wp--style--global--wide-size) !important;
+  width: $wrapper-percentage !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  p + .wp-block-buttons {
+    margin-top: 36px;
+  }
+
+  .wp-block-heading:not(.has-text-align-center) {
+    //max-width: 860px !important;
+    margin-left: 0 !important;
+  }
+
+    p,
+    .wp-block-buttons {
+      max-width: 100% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+
+  // > p:not(.has-text-align-center) {
+  //   max-width: 860px !important;
+  //   margin-left: 0 !important;
+  // }
+
+
+  // .has-text-align-center,
+  // .wp-block-buttons.is-content-justification-center {
+  //   max-width: 860px !important;
+  //   margin-left: auto !important;
+  //   margin-right: auto !important;
+  // }
+}
+
+
+// ----------------------------------------
+// Pull bottom
+// ----------------------------------------
+
+.wp-block-cover.is-style-pull-bottom {
+  position: relative;
+  z-index: 1;
+  min-height: 0 !important;
+  padding: 120px 0 120px;
+
+  + * {
+    margin-top: -80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  @include start-at($large) {
+    min-height: 728px !important;
+
+    .wp-block-cover__inner-container  {
+      margin-top: -100px !important;
+    }
+
+    + * {
+      margin-top: -120px;
+      position: relative;
+      z-index: 2;
+    }
+  }
+}
+
+
+// ----------------------------------------
+// Has form
+// ----------------------------------------
+
+.wp-block-cover  {
+  .wp-block-columns.alignwide {
+    width: 100%;
+  }
+}
+
+.wp-block-cover.is-style-has-form {
+  padding: 120px 0 0 !important;
+  position: relative;
+
+  &:after {
+    content: '';
+    display: block;
+    background: $white;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 80px;
+    min-height: 0 !important;
+    z-index: 1;
+    background: currentColor;
+  }
+
+  .wp-block-cover__inner-container {
+    max-width: var(--wp--style--global--wide-size) !important;
+    position: relative;
+    z-index: 3;
+  }
+}

@@ -1,0 +1,207 @@
+// ---------------------------------------------------------------------
+//
+// ---------------------------------------------------------------------
+
+$width-narrow: 880px;
+$width-standard: var(--wp--style--global--content-size);
+$width-wide: var(--wp--style--global--wide-size);
+
+
+// ----------------------------------------
+// Group
+// ----------------------------------------
+
+:root :where(.is-layout-constrained) > * {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+
+// ----------------------------------------
+// Stardard horizontal alignments
+// ----------------------------------------
+
+@mixin defaultAlignment {
+  width: $wrapper-percentage;
+  max-width: $width-standard;
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  &.alignwide,
+  &.is-style-wide {
+    max-width: $width-wide;
+  }
+
+  &.alignfull {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+.wp-block-columns,
+.gutenberg-blocks > .wp-block-buttons,
+.wp-block-group > .wp-block-buttons,
+.gb-block-post-grid,
+.block-posts,
+.gb-block-accordion,
+.gutenberg-blocks > .wp-block-media-text,
+.wp-block-group > .wp-block-media-text,
+.wp-block-group > .gform_wrapper,
+.wp-block-group > .wp-block-heading,
+.gutenberg-blocks > .wp-block-heading,
+.wp-block-group > p,
+.gutenberg-blocks > p,
+.wp-block-group > ul,
+.gutenberg-blocks > ul,
+.wp-block-group > ol,
+.gutenberg-blocks > ol,
+.gutenberg-blocks > .block-cta-card,
+.wp-block-group > iframe,
+.wp-block-group > .block-max-width-wrapper {
+  @include defaultAlignment;
+
+}
+
+.block-max-width-wrapper {
+  @include blockWidths;
+}
+
+.is-root-container {
+
+}
+
+.editor-styles-wrapper .block-editor-block-list__layout.is-root-container > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+  width: 90%;
+}
+
+.wp-block-group > iframe {
+  display: block;
+  max-width: $width-wide;
+}
+
+// ----------------------------------------
+// Images
+// ----------------------------------------
+
+.gutenberg-blocks > .wp-block-image,
+.wp-block-image {
+  display: block !important;
+
+  &.aligncenter {
+    margin-left: auto;
+    margin-right: auto;
+
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.editor-styles-wrapper {
+  .wp-block-image.aligncenter {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+
+    .components-resizable-box__container {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+
+.wp-block-image.size-full:not(.is-resized) {
+  img {
+    width: 100%;
+  }
+}
+
+.wp-block-spacer {
+  margin: 0 !important;
+}
+
+.gutenberg-blocks .wp-block-quote,
+.wp-block-quote {
+  border-radius: 24px 24px 24px 0px;
+  background: $dark-blue;
+  color: $white;
+  padding: 24px;
+  border-color: $white;
+
+  p, q {
+    font-size: 18px !important;
+    font-family: $ss;
+    font-style: normal !important;
+
+    i {
+      font-style: normal !important;
+    }
+
+    @include start-at($medium) {
+      font-size: 20px !important;
+    }
+  }
+
+
+  cite {
+    display: block;
+    position: relative;
+    padding-left: 64px;
+
+    &:before {
+      content: '';
+      width: 48px;
+      height: 4px;
+      background: $brand;
+      display: block;
+      position: absolute;
+      top: 10px;
+      left: 0;
+    }
+
+    i {
+      color: var(--white, #FFF);
+      leading-trim: both;
+      text-edge: cap;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 100%;
+      letter-spacing: 1.12px;
+      text-transform: uppercase;
+      font-size: 14px;
+      font-style: normal !important;
+    }
+
+    strong,
+    strong i {
+      font-weight: 600 !important;
+      font-size: 20px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    strong + br {
+      display: none;
+    }
+
+  }
+
+  @include start-at($medium) {
+    padding: 40px;
+  }
+}
+
+
+.wp-block-image {
+  margin: 0 0 24px !important;
+}

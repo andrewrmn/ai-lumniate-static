@@ -1,0 +1,230 @@
+// ---------------------------------------------------------------------
+//
+// ---------------------------------------------------------------------
+
+// ----------------------------------------
+// Small
+// ----------------------------------------
+
+.risk-sm {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  grid-gap: 8px;
+  color: $blue-gray;
+
+  &:before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    display: block;
+    border-radius: 3px;
+    background: $gray;
+  }
+
+  &[data-risk="Excellent"]:before,
+  &[data-risk="excellent"]:before {
+    background: var(--risk-excellent);
+  }
+
+  &[data-risk="Very Good"]:before,
+  &[data-risk="very-good"]:before {
+    background: var(--risk-very-good);
+  }
+
+  &[data-risk="Good"]:before,
+  &[data-risk="good"]:before {
+    background: var(--risk-good);
+  }
+
+  &[data-risk="Fair"]:before,
+  &[data-risk="fair"]:before {
+    background: var(--risk-fair);
+  }
+
+  &[data-risk="Poor"]:before,
+  &[data-risk="poor"]:before {
+    background: var(--risk-poor);
+  }
+}
+
+
+// ----------------------------------------
+// list
+// ----------------------------------------
+
+.risk-scale-list {
+  display: grid;
+  align-items: stretch;
+  grid-gap: 8px;
+  row-gap: 36px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  @include start-at($small) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  @include start-at($medium) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+
+
+// ----------------------------------------
+// Large
+// ----------------------------------------
+
+.risk-lg {
+
+  p, .h4, h4 {
+    padding-right: 16px;
+  }
+
+  h4 {
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    margin-bottom: 18px;
+    border-radius: 16px;
+    background: $gray;
+  }
+
+  &[data-risk="Excellent"]:before,
+  &[data-risk="excellent"]:before {
+    background: var(--risk-excellent);
+  }
+
+  &[data-risk="Very Good"]:before,
+  &[data-risk="very-good"]:before {
+    background: var(--risk-very-good);
+  }
+
+  &[data-risk="Good"]:before,
+  &[data-risk="good"]:before {
+    background: var(--risk-good);
+  }
+
+  &[data-risk="Fair"]:before,
+  &[data-risk="fair"]:before {
+    background: var(--risk-fair);
+  }
+
+  &[data-risk="Poor"]:before,
+  &[data-risk="poor"]:before {
+    background: var(--risk-poor);
+  }
+
+
+  &[data-risk="Excellent"] .risk-swatch,
+  &[data-risk="excellent"].risk-swatch {
+    background: var(--risk-excellent);
+  }
+
+  &[data-risk="Very Good"].risk-swatch,
+  &[data-risk="very-good"].risk-swatch {
+    background: var(--risk-very-good);
+  }
+
+  &[data-risk="Good"].risk-swatch,
+  &[data-risk="good"].risk-swatch {
+    background: var(--risk-good);
+  }
+
+  &[data-risk="Fair"].risk-swatch,
+  &[data-risk="fair"].risk-swatch {
+    background: var(--risk-fair);
+  }
+
+  &[data-risk="Poor"].risk-swatch,
+  &[data-risk="poor"].risk-swatch {
+    background: var(--risk-poor);
+  }
+}
+
+
+// ----------------------------------------
+// Swatch
+// ----------------------------------------
+
+.risk-swatch {
+  width: 100%;
+  height: auto;
+  //aspect-ratio: 16/9;
+  border-radius: 16px;
+  background: $gray;
+  color: $white;
+  padding: 24px;
+
+  p {
+    margin-bottom: 4px;
+  }
+
+  @include start-at($large) {
+    padding: 32px;
+  }
+
+  &[data-risk="excellent"],
+  [data-risk="excellent"] & {
+    background: var(--risk-excellent);
+  }
+
+  &[data-risk="very-good"],
+  [data-risk="very-good"] & {
+    background: var(--risk-very-good);
+  }
+
+  &[data-risk="good"],
+  [data-risk="good"] & {
+    background: var(--risk-good);
+  }
+
+  &[data-risk="fair"],
+  [data-risk="fair"] & {
+    background: var(--risk-fair);
+  }
+
+  &[data-risk="poor"],
+  [data-risk="poor"] & {
+    background: var(--risk-poor);
+  }
+}
+
+
+// ----------------------------------------
+// Risk Rating
+// ----------------------------------------
+
+.risk-rating {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 18px;
+
+  @include start-at($medium) {
+    flex-direction: row;
+    grid-gap: 24px;
+    align-items: center;
+
+    .risk-swatch {
+      max-width: 40%;
+      width: 416px;
+    }
+  }
+  @include start-at($large) {
+    grid-gap: 48px;
+  }
+}

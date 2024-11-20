@@ -1,0 +1,638 @@
+// ---------------------------------------------------------------------
+//  Header CSS
+// ---------------------------------------------------------------------
+
+$header-height-sm: 64px;
+$header-height: 80px;
+
+:root :where(body),
+body {
+  padding-top: $header-height-sm;
+
+  @include start-at($header-breakpoint) {
+    padding-top: $header-height;
+  }
+}
+
+.site-header {
+  position: fixed;
+	display: block;
+  z-index: 10;
+  width: 100%;
+  left: 0;
+  top: 0;
+	background: $white;
+	color: $black;
+  border-bottom: 1px solid $border;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+
+  @include start-at($header-breakpoint) {
+    border-bottom: none;
+  }
+}
+
+body {
+  &.is-sticky {
+		#site-header {
+      opacity: 0;
+			pointer-events: none;
+      transform: translate3d(0, -80%, 0);
+	  }
+
+    &.scrolling-up {
+      #site-header {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+  			pointer-events: inherit;
+      }
+  	}
+	}
+}
+
+.site-header__inner {
+	height: $header-height-sm;
+	//width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-gap: 24px;
+
+	@include start-at($header-breakpoint) {
+    height: $header-height;
+	}
+  @include start-at($xlarge) {
+    grid-gap: 48px;
+	}
+}
+
+// ----------------------------------------
+// Logo Styles
+// ----------------------------------------
+
+.site-branding {
+  position: relative;
+  z-index: 5;
+  width: 50%;
+
+  a {
+    display: flex;
+		align-items: center;
+    width: 100%;
+    max-width: 106px;
+    margin: 0;
+  }
+
+  svg, img {
+    width: 100%;
+    display: block;
+    fill: currentColor;
+  }
+
+  @include start-at($header-breakpoint) {
+    width: 140px;
+    min-width: 140px;
+
+    a {
+      max-width: 132px;
+    }
+	}
+}
+
+// ----------------------------------------
+// Desktop Nav
+// ----------------------------------------
+
+.desktop-navigation {
+  display: none;
+
+  @include start-at($header-breakpoint) {
+    width: calc(100% - 280px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  > ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: centert;
+    list-style-type: none;
+    grid-gap: 32px;
+
+    &:after {
+      @include cover;
+      content: '';
+      background: $white;
+      z-index: 4;
+      border-bottom: 1px solid $border;
+    }
+
+    @include start-at(1500px) {
+      grid-gap: 48px;
+    }
+
+    > li > a {
+      position: relative;
+      z-index: 5;
+    }
+    > li > .sub-menu {
+      z-index: 3;
+    }
+
+    a {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      font-size: 15px;
+      color: $black;
+      letter-spacing: 0;
+      text-decoration: none;
+      transition: all $trans;
+      height: $header-height;
+
+      @include start-at($xlarge) {
+        font-size: 15px;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 4px;
+        width: 100%;
+        transform-origin: left;
+        transform: scaleX(0);
+        background: $brand;
+        transition: transform $trans;
+      }
+
+      @include start-at($xlarge) {
+        font-size: 15px;
+      }
+
+      &:focus,
+      &:hover,
+      &.is-active {
+        opacity: 1;
+
+        &:after {
+          transform: scaleX(1);
+        }
+      }
+    }
+
+    li.current-menu-item > a,
+    li.current-menu-parent > a,
+    li.current-menu-ancestor > a {
+      &:after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  li.menu-item-has-children,
+  li.menu-item-has-children a {
+    position: relative;
+  }
+
+  li.menu-item-has-children.is-hovering {
+    a:after {
+      transform: scale(1);
+    }
+  }
+}
+
+.desktop-navigation > ul > li:not(.js-mega-menu) > ul.sub-menu {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  //display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  list-style-type: none;
+  min-width: 340px;
+  //overflow: hidden;
+  grid-gap: 2px;
+  text-align: left;
+
+  position: absolute;
+  top: 100%;
+  left: -16px;
+  padding: 28px 0 32px;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(0, -20px, 0);
+  transition: all $trans;
+  //border: 1px solid $border;
+  //background: $brand;
+  //min-height: 406px;
+
+  max-height: 446px;
+  //overflow-y: auto;
+
+  li {
+    flex-grow: 0;
+  }
+
+  a {
+    background: transparent;
+    min-width: 300px;
+    white-space: nowrap;
+    border-radius: 50px;
+    padding: 7px 16px;
+    height: auto;
+    font-weight: 400;
+    display: inline-flex;
+    justify-content: flex-start;
+    transition: all $trans;
+
+    &:after {
+      display: none;
+    }
+
+    &:hover,
+    &:focus {
+      color: currentColor;
+      background: $light;
+    }
+  }
+
+  li.current-menu-item a {
+    background: $light;
+  }
+}
+
+.desktop-navigation > ul > li.menu-item-has-children:not(.js-mega-menu):hover,
+.desktop-navigation > ul > li.menu-item-has-children:not(.js-mega-menu).is-focused {
+
+  + ul.sub-menu,
+  > ul.sub-menu {
+    pointer-events: inherit;
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  .js-menu-panel {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+// ----------------------------------------
+// Panel for Hovers
+// ----------------------------------------
+
+.js-menu-panel {
+  position: fixed;
+  top: $header-height;
+  left: 0;
+  width: 100%;
+  //min-height: 406px;
+  padding: 0;
+  border-bottom: 1px solid $border;
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.08);
+  z-index: -1;
+  opacity: 0;
+  background: $white;
+  transform: translate3d(0, -20%, 0);
+  pointer-events: none;
+  transition: all $trans;
+
+  &.is-open {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+// ----------------------------------------
+// Mega Menus
+// ----------------------------------------
+
+
+.desktop-navigation .js-mega-menu > .sub-menu {
+    position: fixed;
+    top: $header-height;
+    left: 50%;
+    width: $wrapper-percentage;
+    max-width: $wrapper-width;
+    min-height: 406px;
+    padding: 36px 0;
+    z-index: 8;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+
+    opacity: 0;
+    transform: translate3d(-50%, -10%, 0);
+    pointer-events: none;
+    transition: all $trans;
+
+    > li {
+      flex-grow: 1;
+      flex-basis: 0;
+      padding: 40px 30px;
+      border-right: 1px solid $border;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      > a {
+        width: 100%;
+        text-align: left;
+        justify-content: left;
+        font-weight: 400;
+        padding: 7px 16px;
+        height: auto;
+        font-family: $mono;
+        text-transform: uppercase;
+        letter-spacing: 1.04px;
+        font-size: 13px;
+        margin-bottom: 12px;
+
+        &:after {
+          display: none;
+        }
+
+        &:hover,
+        &:focus {
+          cursor: text;
+        }
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+        padding: 0 0;
+        margin: 0;
+
+        a {
+          height: auto;
+          font-family: $ss;
+          display: block;
+          border-radius: 50px;
+          font-weight: 400;
+          padding: 7px 16px;
+          transition: background $trans;
+
+          &:after {
+            display: none;
+          }
+          &:hover,
+          &:focus {
+            background: $light;
+          }
+        }
+
+        li.current-menu-item a {
+          background: $light;
+        }
+      }
+    }
+  }
+
+.desktop-navigation .js-mega-menu:hover > .sub-menu,
+.desktop-navigation .js-mega-menu.is-focused > .sub-menu {
+  opacity: 1;
+  transform: translate3d(-50%, 0, 0);
+  pointer-events: inherit;
+}
+
+.desktop-navigation .js-mega-menu:hover .js-menu-panel,
+.desktop-navigation .js-mega-menu:focus .js-menu-panel,
+.desktop-navigation .js-mega-menu.is-focused .js-menu-panel {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+
+
+// ----------------------------------------
+// Desktop Utility
+// ----------------------------------------
+
+.desktop-utility {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 50%;
+  grid-gap: 8px;
+
+  @include start-at($header-breakpoint) {
+    width: 140px;
+    min-width: 140px;
+  }
+
+  @include stop-at($header-breakpoint) {
+    .site-search-trigger {
+      display: none;
+    }
+    .btn {
+      background: transparent;
+      border: 1px solid $border;
+
+      &:hover,
+      &:focus {
+        background: $black;
+        border-color: $black;
+        color: $white;
+      }
+    }
+  }
+
+  @include stop-at($small) {
+    .btn {
+      display: none !important;
+    }
+  }
+  @include stop-at($medium) {
+
+  }
+
+  button {
+    border: none;
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+.site-search-trigger {
+  position: relative;
+  overflow: hidden;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: $black;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $trans;
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    width: 20px;
+    fill: currentColor;
+    transform-origin: center;
+    transition: all $trans;
+  }
+  .close {
+    opacity: 0;
+  }
+
+  &:focus {
+    opacity: 0.4;
+  }
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  body.search-is-open & {
+    opacity: 0.8;
+    .close {
+      opacity: 1;
+    }
+    .open {
+      opacity: 0;
+    }
+  }
+}
+
+
+// ----------------------------------------
+// Burger
+// ----------------------------------------
+
+.burger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transform-origin: center;
+  background: $brand;
+  color: $black;
+  transition: all $trans;
+
+  .close {
+    opacity: 0;
+  }
+
+  @include start-at($header-breakpoint) {
+    display: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+  &:focus {
+    background: $black;
+    color: $white;
+  }
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    width: 20px;
+    fill: currentColor;
+    transform-origin: center;
+    transition: opacity 0.1s ease;
+
+    &.close {
+      width: 24px;
+    }
+  }
+}
+
+
+.menu-is-open .burger {
+  background: $black;
+  color: $white;
+  transform: scale(1.2);
+
+  .close {
+    opacity: 1;
+  }
+  .open {
+    opacity: 0;
+  }
+}
+
+@include start-at($header-breakpoint) {
+  .hide-header-lg {
+    display: none !important;
+  }
+}
+
+
+// ----------------------------------------
+// Logged in
+// ----------------------------------------
+
+html {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body.logged-in.admin-bar {
+  #wpadminbar {
+    position: fixed;
+    display: none !important;
+
+    #wp-admin-bar-search {
+      display: none !important;
+    }
+
+    input[type='submit'] {
+      border: none !important;
+      background: transparent !important;
+      text-align: left !important;
+    }
+  }
+}
+
+@include start-at(783px) {
+  html {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  body.logged-in.admin-bar {
+    #wpadminbar {
+      display: block !important;
+      transform: translateY(-80%) !important;
+      position: fixed;
+      transition: all $trans;
+      opacity: 0.7;
+
+      &:hover {
+        transform: translateY(0) !important;
+        opacity: 1;
+      }
+    }
+  }
+}

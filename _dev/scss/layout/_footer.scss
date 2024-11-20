@@ -1,0 +1,174 @@
+// ---------------------------------------------------------------------
+//  Site Footer Styles
+// ---------------------------------------------------------------------
+
+$footer-bp: $medium;
+
+.site-footer {
+  background: $black;
+  position: relative;
+  z-index: 7;
+  padding: 86px 0 20px;
+  color: $white;
+
+  @include start-at($medium) {
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  small, .p-sm {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    color: $white;
+  }
+}
+
+.site-footer__logo {
+  width: 100%;
+
+  a {
+    display: inline-block;
+    width: 132px;
+    margin-bottom: 12px;
+  }
+
+  @include  start-at($medium) {
+    width: 50%;
+  }
+}
+
+
+// ----------------------------------------
+//
+// ----------------------------------------
+
+.site-footer__bottom {
+  border-top: 1px solid #232735;
+  border-bottom: 1px solid #232735;
+  padding: 16px 0;
+  margin: 48px auto 0;
+  align-items: center;
+}
+
+.site-footer__legal {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  grid-gap: 4px;
+
+  small {
+    color: #9B9FAD;
+    display: block;
+    font-size: 12px;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    list-style: none;
+    grid-gap: 4px 16px;
+
+    a {
+      font-size: 12px;
+    }
+
+    @include start-at($medium) {
+      grid-gap: 16px;
+    }
+  }
+}
+
+.site-footer ul.social-list {
+  @include socialList(24px);
+}
+
+
+// ----------------------------------------
+// Form
+// ----------------------------------------
+
+.site-footer {
+
+  .gform_wrapper {
+    margin: 24px 0 12px;
+
+    .gform_fields .gfield {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  .gform_confirmation_message {
+    padding: 0 !important;
+    color: $white !important;
+    margin: 0;
+    text-align: left;
+    font-size: 14px;
+    opacity: 0.7;
+  }
+
+  input[type='email'] {
+    background: $white;
+    border: none;
+    height: 40px;
+    padding: 0 16px;
+    font-size: 16px;
+  }
+
+  #gform_1 {
+    display: flex;
+    align-items: flex-start;
+    grid-gap: 8px;
+  }
+
+  .gform_footer {
+    margin-top: 0;
+    padding: 0;
+  }
+
+  input[type='submit'],
+  button {
+    height: 40px;
+    min-width: 135px;
+    margin-top: 0;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: transparent;
+      color: $white;
+      border: 1px solid $white;
+    }
+  }
+}
+
+.site-footer__signup {
+  position: relative;
+  z-index: 2;
+
+  &:after {
+    content: '';
+    width: calc(100% + 24px);
+    height: calc(100% + 24px);
+    background: transparent;
+    position: absolute;
+    display: block;
+    z-index: -1;
+    top: -12px;
+    left: -12px;
+    border-radius: 16px;
+    transition: background .6s ease-in-out;
+  }
+
+  &.is-focused:after {
+    transition-delay: .8s;
+    background: rgba(255,255,255,0.2);
+  }
+}

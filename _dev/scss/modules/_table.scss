@@ -1,0 +1,75 @@
+
+// ---------------------------------------------------------------------
+//
+// ---------------------------------------------------------------------
+
+.table-wrap {
+  overflow: auto;
+
+  > * {
+    min-width: 800px;
+  }
+}
+
+// ----------------------------------------
+//
+// ----------------------------------------
+
+.table,
+table {
+  width: 100%;
+  border-spacing: 0;
+  border: 1px solid $border;
+  border-bottom: none;
+  min-width: 1000px;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 14px;
+  color: $blue-gray;
+
+  thead {
+    background: $blue-gray;
+    color: $white;
+    text-align: left;
+
+    th {
+      height: 48px;
+      font-family: $sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      padding: 16px;
+    }
+  }
+
+  tbody td {
+    border-bottom: 1px solid $border;
+  }
+
+  tbody tr:nth-child(2n + 1) {
+    //background: $light;
+  }
+
+  td {
+    padding: 16px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  a {
+    font-size: 14px;
+    text-decoration: underline;
+    transition: opacity $trans;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+// ----------------------------------------
+//
+// ----------------------------------------
+

@@ -1,0 +1,155 @@
+// ---------------------------------------------------------------------
+//
+// ---------------------------------------------------------------------
+
+
+.gutenberg-blocks .wp-block-columns,
+.gutenberg-blocks .wp-block-columns.is-layout-flex {
+  margin-bottom: 0;
+
+  @include start-at($xlarge) {
+    grid-gap: 48px !important;
+  }
+}
+
+@include stop-at($medium) {
+  .wp-block-columns.is-style-large-gap-sm {
+    grid-gap: 48px !important;
+  }
+}
+
+.gutenberg-blocks .wp-block-columns .wp-block-columns {
+  width: 100%;
+  max-width: 100%;
+}
+
+.gutenberg-blocks h1.wp-block-heading + .wp-block-columns,
+.gutenberg-blocks .wp-block-heading + .wp-block-columns{
+  margin-top: $spacing2;
+}
+
+//.wp-block-column > .wp-block-separator {
+//  margin: 32px 0 !important;
+//}
+
+.wp-block-column > p + .wp-block-buttons {
+  margin-top: 0 !important;
+}
+
+@include start-at($medium) {
+  .wp-block-column.border-left {
+    border-left: .5px solid $border;
+    padding-left: 24px;
+  }
+}
+
+.wp-block-columns .wp-block-columns {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+// ----------------------------------------
+// Borders
+// ----------------------------------------
+
+.wp-block-columns.is-style-borders {
+  grid-gap: 48px;
+}
+
+.wp-block-columns.is-style-borders > .wp-block-column + .wp-block-column {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    display: block;
+    background: $border;
+    transform: translate3d(0, -24px, 0);
+  }
+
+  @include start-at($medium) {
+    &:before {
+      width: 1px;
+      height: 100%;
+      transform: translate3d(-24px, 0, 0);
+    }
+  }
+}
+
+
+// ----------------------------------------
+//
+// ----------------------------------------
+
+.gutenberg-blocks .wp-block-columns.is-style-gap-sm,
+.wp-block-columns.is-style-gap-sm {
+  grid-gap: 12px !important;
+
+  @media (min-width: $medium) and (max-width: $large) {
+    flex-wrap: wrap !important;
+    .wp-block-column {
+      width: calc(33% - 12px) !important;
+      flex-basis: unset;
+      flex-grow: unset;
+    }
+  }
+
+  .wp-block-group.is-style-card {
+    padding: 36px 16px !important;
+    display: flex;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    grid-gap: 0 !important;
+
+    ul {
+      margin-top: 0 !important;
+      flex-grow: 1;
+    }
+
+    @include start-at($medium) {
+      padding: 48px 24px !important;
+    }
+  }
+}
+
+
+// ----------------------------------------
+// Flush
+// ----------------------------------------
+
+.wp-block-columns.is-style-flush {
+  gap: 0;
+  column-gap: 0 !important;
+  row-gap: 0 !important;
+}
+
+
+// ----------------------------------------
+// Flip
+// ----------------------------------------
+
+@include stop-at($medium) {
+  .wp-block-columns.is-style-flip {
+    flex-direction: column-reverse;
+  }
+}
+
+@include start-at($medium) {
+  .wp-block-column.is-style-sticky {
+    position: sticky;
+    top: 80px;
+    align-self: flex-start;
+  }
+}
+
+@media (min-width: $medium) and (max-width: $xlarge) {
+  .wp-block-column .wp-block-button__link {
+    max-width: 100%;
+    padding: 0 24px !important;
+  }
+}

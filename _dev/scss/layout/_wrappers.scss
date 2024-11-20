@@ -1,0 +1,90 @@
+// ---------------------------------------------------------------------
+//  Wrapper Styles (Horizontal Spacing)
+// ---------------------------------------------------------------------
+
+.wrapper {
+  @include wrapper;
+}
+
+.wrapper-wide {
+  @include wrapper;
+  max-width: var(--wp--style--global--wide-size);
+}
+
+.wrapper-thin {
+  @include wrapper;
+  max-width: 820px;
+}
+
+.wrapper--thin {
+  max-width: 880px;
+}
+
+.wrapper-x-wide {
+  padding: 0 $wrapper-padding;
+  max-width: 1800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wrapper-xwide {
+  @include wrapper;
+  max-width: 100%;
+}
+
+.wrapper-md {
+  @include wrapper;
+  max-width: 1000px;
+}
+
+.wrapper-full {
+  max-width: 100%;
+  //overflow-x: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.wrapper-after-md {
+  width: 100%;
+
+  @include start-at($medium) {
+    @include wrapper;
+    max-width: $wrapper-width;
+  }
+}
+
+.wrapper-form {
+  position: relative;
+  z-index: 2;
+}
+
+.wrapper--sm-p {
+  p {
+    max-width: 586px;
+  }
+
+  &.text-center {
+    p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+.wrapper--md-p {
+  p {
+    max-width: 910px;
+
+  }
+
+  &.text-center {
+    p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+// ----------------------------------------
+// Extensions
+// ----------------------------------------
+

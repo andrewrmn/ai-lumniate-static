@@ -1,0 +1,318 @@
+// ---------------------------------------------------------------------
+//  Navigation
+// ---------------------------------------------------------------------
+
+.navigation-drawer {
+  display: block;
+  position: fixed;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background: $white;
+  color: $black;
+  top: $header-height-sm;
+  left: 0;
+  z-index: 999;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-y: auto !important;
+  height: 100vh;
+
+  transform: translate3d(0, 0, 0);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity $trans;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include start-at($header-breakpoint) {
+    display: none !important;
+  }
+}
+
+.navigation-drawer__inner {
+  //overflow: scroll;
+  min-height: auto;
+  position: relative;
+  padding: 0 0 190px;
+  margin: 0;
+  display: flex;
+  align-items: stretch;
+}
+
+
+// ----------------------------------------
+// Nav Buckets
+// ----------------------------------------
+
+.nav-buckets {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 40px;
+  height: 100%;
+}
+
+
+// ----------------------------------------
+// Primary
+// ----------------------------------------
+
+.nav-buckets__primary {
+
+  @include start-at($header-breakpoint) {
+    transition: transform $trans, opacity $trans;
+    transform: translate3d(0, 16px, 0);
+    opacity: 0;
+  }
+
+  .main-nav {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    grid-gap: 0;
+
+    > li {
+      padding: 0;
+      border-bottom: 1px solid $border;
+    }
+
+    > li > a {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 56px;
+      font-size: 17px;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 8px $wrapper-padding;
+    }
+
+    > li.menu-item-has-children {
+      position: relative;
+
+      > a {
+        justify-content: space-between;
+
+        &:after {
+          content: '';
+          display: block;
+          background: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'rgba(15,19,33,1)\'%3E%3Cpath d=\'M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z\'%3E%3C/path%3E%3C/svg%3E') center / auto no-repeat;
+          width: 20px;
+          height: 20px;
+          transition: transform $trans;
+        }
+
+        &.is-open {
+          &:after {
+            transform: rotate(90deg);
+          }
+        }
+      }
+    }
+  }
+
+  // Second level
+  .main-nav > li > ul {
+    list-style-type: none;
+    padding: 0 $wrapper-padding 24px;
+    margin: 0;
+    color: $black;
+    border-radius: 12px;
+
+    li.current-menu-item > a {
+      background: $light;
+    }
+
+    a {
+      display: flex;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 10px 16px;
+      border-radius: 50px;
+      transition: background $trans;
+
+      &:hover {
+        background: $light;
+      }
+    }
+  }
+
+  // 3rd and beyond level
+  .main-nav > li > ul ul{
+    list-style-type: none;
+    padding-bottom: 12px;
+    padding-left: 0;
+    padding-top: 0;
+
+    a {
+      font-size: 14px;
+      font-weight: 400;
+      padding: 6px 16px;
+    }
+  }
+
+  @include start-at($header-breakpoint) {
+    width: 50%;
+  }
+}
+
+
+.navigation-drawer  .js-mega-menu {
+
+  .sub-menu > li.menu-item-has-children {
+
+    // Menu Title
+    > a {
+      font-family: $mono;
+      padding: 10px 0;
+      opacity: .6;
+      text-transform: uppercase;
+      letter-spacing: 1.04px;
+      font-size: 13px;
+      background: transparent !important;
+      &:hover {
+        cursor: text;
+      }
+    }
+  }
+}
+
+
+// ----------------------------------------
+// Bottom
+// ----------------------------------------
+
+.nav-buckets__bottom {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-grow: 1;
+  margin-top: 72px;
+
+  .btn {
+    width: 100%;
+    max-width: 390px;
+    margin: 0 auto;
+  }
+}
+
+
+// ----------------------------------------
+// Menu is open
+// ----------------------------------------
+
+@include stop-at($header-breakpoint) {
+  body.menu-is-open {
+    overflow: hidden;
+    height: 100%;
+
+    .navigation-drawer {
+      opacity: 1;
+      pointer-events: inherit;
+      transform: translate3d(0, 0, 0);
+
+      .nav-buckets__primary {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+      }
+
+      .nav-buckets__secondary {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+      }
+
+      .nav-buckets__tertiary {
+        //transform: translate3d(0,0,0);
+      }
+    }
+  }
+}
+
+
+// ----------------------------------------
+// Menu is open
+// ----------------------------------------
+
+.site-search {
+  position: relative;
+  background: $light;
+  width: 100%;
+  padding: 8px $wrapper-padding;
+
+  label {
+    display: block;
+    color: var(--brand-gray, #AFAFB4);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 1.04px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+
+    @include stop-at($header-breakpoint) {
+      display: none;
+    }
+  }
+
+  .search-field {
+    width: 100%;
+    position: relative;
+
+    button {
+      appearance: none;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate3d(0, -50%, 0);
+      z-index: 2;
+      transition: opacity $trans;
+
+      &:hover {
+        opacity: 0.7;
+        cursor: pointer;
+      }
+
+      @include start-at($header-breakpoint) {
+        width: 56px;
+        height: 56px;
+      }
+    }
+
+    svg {
+      display: block;
+      width: 24px;
+    }
+
+    input {
+      width: 100%;
+      height: 48px;
+      display: block;
+      background: $white;
+      border-radius: 50px;
+      padding: 16px 48px 16px 16px;
+      border: none;
+
+      @include start-at($header-breakpoint) {
+        height: 56px;
+      }
+    }
+  }
+}

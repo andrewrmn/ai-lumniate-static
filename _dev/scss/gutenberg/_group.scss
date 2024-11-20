@@ -1,0 +1,248 @@
+// ---------------------------------------------------------------------
+//
+// ---------------------------------------------------------------------
+
+
+.gutenberg-blocks,
+.editor-styles-wrapper {
+  .wp-block-group {
+    padding: 0;
+  }
+}
+
+
+.editor-styles-wrapper .wp-block-group {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.wp-block-group.is-style-thin,
+.wp-block-group.is-style-x-thin {
+  max-width: 860px;
+  width: $wrapper-percentage;
+  margin-left: auto;
+  margin-right: auto;
+
+  > * {
+    max-width: 100%;
+    width: 100% !important;
+  }
+}
+
+.is-root-container .wp-block-group.is-style-thin {
+  max-width: 1192px !important;
+}
+
+.is-root-container .wp-block-group.is-style-x-thin,
+.wp-block-group.is-style-x-thin {
+  max-width: 680px;
+}
+
+// ----------------------------------------
+//
+// ----------------------------------------
+
+.wp-block-group.is-style-pattern-1 {
+  position: relative;
+  z-index: 1;
+
+  &:after {
+    content: '';
+    @include cover;
+    z-index: -1;
+    background: url('./build/img/bg-pattern-1.svg') left / auto 100% no-repeat;
+    pointer-events: none;
+  }
+}
+
+.wp-block-group.is-style-pattern-squares {
+  position: relative;
+  z-index: 1;
+
+  &:after {
+    content: '';
+    @include cover;
+    z-index: -1;
+    background: url('./build/img/bg-pattern-squares.svg') center / cover no-repeat;
+    pointer-events: none;
+  }
+}
+
+
+// ----------------------------------------
+// Card
+// ----------------------------------------
+
+.wp-block-group.is-style-card,
+.wp-block-group.is-style-card-clip {
+  width: 100%;
+  max-width: 100%;
+  padding: 48px 24px;
+  //height: 100%;
+
+  @include start-at($medium) {
+    padding: 48px 32px;
+  }
+}
+
+.wp-block-group.is-style-card{
+  border-radius: 8px;
+}
+
+.wp-block-group.is-style-card-clip {
+  clip-path: polygon(calc(100% - 40px) 0, 100% 40px, 100% 100%, 0 100%, 0 0);
+}
+
+//.is-style-card.has-light-background-color {
+//  p {
+//    color: $gray;
+//  }
+//
+//  b, strong {
+//    color: $black;
+//  }
+//}
+
+.height-100 {
+  height: 100%;
+}
+
+
+// ----------------------------------------
+//
+// ----------------------------------------
+
+.wp-block-column .wp-block-group > *,
+.wp-block-group .wp-block-group {
+  width: 100%;
+  max-width: 100%;
+}
+
+
+.wp-block-group.is-style-split-bottom {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  padding-top: 72px;
+
+  @include stop-at($medium) {
+    padding-top: 48px;
+  }
+  //background: inherit !important;
+
+  // @include start-at($medium) {
+  //   //background: $brand;
+  //   background: transparent !important;
+  // }
+
+  .wbp-split-bg-bg {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $brand;
+    z-index: 1;
+    max-width: 100%;
+    margin: 0 !important;
+
+    @include stop-at($medium) {
+      top: 0 !important;
+    }
+  }
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+
+
+
+  @include start-at($medium) {
+    .wp-block-media-text__content {
+      > * {
+        max-width: 480px !important;
+      }
+      > p {
+        max-width: 420px !important;
+      }
+    }
+
+    .wp-block-media-text__content > .wp-block-heading {
+      margin-bottom: 48px;
+      //margin-bottom: 0 !important;
+    }
+  }
+}
+
+
+@include stop-at($medium) {
+  .get-involved-hero {
+    background-image: none !important;
+
+    .wp-block-media-text__media img {
+      object-fit: none !important;
+      width: auto;
+      height: auto;
+    }
+  }
+}
+
+@include start-at($medium) {
+  .get-involved-hero {
+
+    .wp-block-media-text__media {
+      display: none;
+    }
+  }
+}
+
+@include start-at($large) {
+  .get-involved-hero {
+    min-height: 580px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .wp-block-media-text__media {
+      display: none;
+    }
+  }
+}
+
+
+// ----------------------------------------
+//
+// ----------------------------------------
+
+.wp-block-group.is-layout-grid.wp-block-group-is-layout-grid {
+  max-width: $width-standard;
+  width: $wrapper-percentage !important;
+  margin-left: auto;
+  margin-right: auto;
+
+
+  display: grid;
+  align-items: stretch;
+  grid-gap: 24px;
+  row-gap: 36px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+
+  @include start-at($medium) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include start-at($large) {
+    grid-gap: 48px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .wp-block-group > * {
+    width: 100%;
+    max-width: 100%;
+  }
+}

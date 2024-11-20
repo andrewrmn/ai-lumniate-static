@@ -1,0 +1,431 @@
+// ---------------------------------------------------------------------
+//  Typography Styles
+// ---------------------------------------------------------------------
+
+// ----------------------------------------
+// Headings
+// ----------------------------------------
+
+@mixin heading0 {
+  display: block;
+  font-family: $ss;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: -0.96px;
+  margin-top: 0;
+  margin-bottom: 18px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include start-at($large) {
+    font-size: 80px;
+  }
+}
+
+.h0 {
+  @include heading0;
+}
+
+// Edit via Gutenberg
+@mixin heading1 {
+  display: block;
+  font-family: $ss;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: -0.96px;
+  margin-top: 0;
+  margin-bottom: 32px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include start-at($large) {
+    font-size: 64px;
+  }
+}
+
+
+.h1,
+h1 {
+  @include heading1;
+}
+
+@mixin heading2 {
+  display: block;
+  font-family: $ss;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.24;
+  letter-spacing: -0.4px;
+  margin-bottom: 18px;
+  margin-top: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include start-at($large) {
+    font-size: 48px;
+  }
+}
+
+.h2,
+h2 {
+  @include heading2;
+}
+
+
+@mixin heading3 {
+  display: block;
+  font-family: $ss;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.4;
+  letter-spacing: -0.32px;
+  margin-bottom: 16px;
+  margin-top: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include start-at($large) {
+    font-size: 32px;
+  }
+}
+
+.h3,
+h3 {
+  @include heading3;
+}
+
+@mixin heading4 {
+  display: block;
+  font-family: $ss;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: -0.24px;
+  margin-bottom: 12px;
+  margin-top: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include start-at($large) {
+    font-size: 24px;
+  }
+}
+
+.h4,
+h4 {
+  @include heading4;
+}
+
+
+@mixin heading5 {
+  display: block;
+  font-family: $ss;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: -0.2px;
+  margin-bottom: 12px;
+  margin-top: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include start-at($large) {
+    font-size: 20px;
+  }
+}
+
+.h5,
+h5 {
+  @include heading5;
+}
+
+@mixin heading6 {
+  display: block;
+  font-style: normal;
+  font-weight: 500;
+  font-family: $mono;
+  text-transform: uppercase;
+  letter-spacing: 1.04px;
+  font-size: 13px;
+  font-style: normal;
+  line-height: 1.2;
+  margin-bottom: 18px;
+  margin-top: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include start-at($large) {
+    font-size: 15px;
+  }
+}
+
+.h6,
+h6,
+*.subheading  {
+  @include heading6;
+}
+
+
+.is-style-number {
+  font-family: $serif !important;
+  font-size: 64px !important;
+  line-height: 1 !important;
+  margin-bottom: 0 !important;
+  font-weight: 400 !important;
+  position: relative;
+  margin-bottom: 8px !important;
+
+  &:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  @include start-at($large) {
+    font-size: 90px !important;
+  }
+}
+
+.is-style-subheading + .wp-block-heading {
+  margin-top: 24px;
+}
+
+// ----------------------------------------
+// Body copy
+// ----------------------------------------
+
+p,
+.para {
+  font-family: $ss;
+  display: block;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 18px;
+  margin-top: 0;
+  max-width: 880px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+.p-xlg {
+  font-size: 20px !important;
+
+  @include start-at($large) {
+    font-size: 24px !important;
+  }
+}
+
+.p-lg {
+  font-size: 18px !important;
+
+  @include start-at($large) {
+    font-size: 20px !important;
+  }
+}
+
+
+.p-sm,
+small {
+  font-size: 14px !important;
+
+  @include start-at($large) {
+    font-size: 14px !important;
+  }
+}
+
+
+.caption,
+figcaption,
+.font-mono {
+  font-family: $mono;
+}
+
+
+p.is-style-medium-width {
+  span {
+    display: block;
+    max-width: 880px;
+  }
+
+  &.has-text-align-center span {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+p.is-style-narrow-width {
+  span {
+    display: block;
+    max-width: 680px;
+  }
+
+  &.has-text-align-center span {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// ----------------------------------------
+// Links
+// ----------------------------------------
+
+.rte b, .rte strong,
+b, strong {
+  font-weight: 600 !important;
+}
+
+
+
+// ----------------------------------------
+// Lists
+// ----------------------------------------
+#content {
+  ol,
+  ul {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    padding-left: 24px;
+
+    li + li {
+      margin-top: 10px;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      margin-top: 12px !important;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+
+    li {
+      position: relative;
+
+      &:before {
+        content: '';
+        position: absolute;
+        transform: translate3d(0, -4px, 0);
+        width: 4px;
+        min-width: 4px;
+        height: 4px;
+        background: currentColor;
+        display: block;
+        left: -12px;
+        top: 14px;
+      }
+    }
+  }
+
+  ul.is-style-four-col,
+  ol.is-style-four-col {
+
+    li {
+      break-inside: avoid;
+    }
+
+    @include start-at($medium) {
+      column-count: 2;
+    }
+    @include start-at($large) {
+      column-count: 4;
+    }
+  }
+
+  .wp-block-heading {
+    + ul,
+    + ol {
+      margin-top: 0 !important;
+    }
+  }
+}
+
+// ----------------------------------------
+// CheckLists
+// ----------------------------------------
+
+ul.is-style-checklist-sm,
+ul.is-style-checklist-large,
+ul.is-style-checklist-two-col {
+  list-style-type: none !important;
+  padding: 0 !important;
+  margin-top: 12px !important;
+
+  li {
+    display: flex;
+    align-items: baseline;
+    grid-gap: 12px;
+
+    &:before {
+      display: none;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      transform: translateY(2px);
+    }
+  }
+}
+
+ul.is-style-checklist-two-col {
+  padding: 0 !important;
+
+  ul {
+    width: 100%;
+  }
+
+  @include start-at($xlarge) {
+    display: block;
+    column-count: 2;
+    column-gap: 16px;
+
+    li {
+      margin: 0 0 18px !important;
+      break-inside: avoid;
+    }
+  }
+}
+
+
+ul.is-style-checklist-large {
+  padding: 0 !important;
+
+  li {
+    border-top: 1px solid rgba(150,150,150, .2);
+    margin: 0 !important;
+    padding: 22px 0;
+
+    &:last-child {
+      border-bottom: 1px solid rgba(150,150,150, .2);
+    }
+  }
+}

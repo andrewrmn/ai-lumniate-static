@@ -1,0 +1,58 @@
+// ---------------------------------------------------------------------
+//
+// ---------------------------------------------------------------------
+
+
+.hero {
+  background: $blue;
+  color: $white;
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero__inner {
+  display: flex;
+  flex-direction: column;
+
+
+  @include start-at($medium) {
+    @include wrapper;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    min-height: 462px;
+    grid-gap: 48px;
+
+    > * {
+      flex-grow: 1;
+      flex-basis: 0;
+    }
+  }
+}
+
+.hero__title {
+  padding: 96px 0;
+
+
+  img {
+    margin-bottom: 18px;
+    max-width: 70%;
+  }
+
+  @include stop-at($medium) {
+    @include wrapper;
+  }
+}
+
+
+.hero__content {
+  padding: 24px 24px 36px;
+  background: $blue-light;
+  color: $black;
+
+
+  @include start-at($medium) {
+    padding: 48px 32px;
+    align-self: flex-end;
+  }
+}

@@ -1,0 +1,40 @@
+// ---------------------------------------------------------------------
+//
+// ---------------------------------------------------------------------
+
+.wp-block-embed.is-type-video .wp-block-embed__wrapper,
+.wp-block-embed__wrapper {
+  display: block;
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+  z-index: 1;
+
+  > * {
+    z-index: 2;
+  }
+
+  img,
+  figure {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  iframe,
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+
+// ----------------------------------------
+// Video
+// ----------------------------------------
