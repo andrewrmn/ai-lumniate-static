@@ -145,80 +145,6 @@
   </section>
 
 
-<script>
-  document.querySelectorAll('.sut-result').forEach((result) => {
-    const scores = Array.from(
-      result.querySelectorAll('.sut-results-reference__scores div')
-    ).map((el) => parseFloat(el.textContent));
-
-    const grades = ['Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
-    const refElement = result.querySelector('.sut-results-reference__line .ref');
-    const gradientElement = result.querySelector('.js-range-gradient');
-
-    // Function to calculate percentage position
-    const calculatePosition = (value) => {
-      for (let i = 0; i < scores.length - 1; i++) {
-        if (value <= scores[i] && value >= scores[i + 1]) {
-          const rangeStart = scores[i];
-          const rangeEnd = scores[i + 1];
-          const rangeWidth = rangeStart - rangeEnd;
-          const relativePosition = (rangeStart - value) / rangeWidth;
-          return ((i + relativePosition) / (scores.length - 1)) * 100;
-        }
-      }
-      return value >= scores[0] ? 0 : 100; // Clamp to edges if out of bounds
-    };
-
-    // Function to find the closest grade
-    const findClosestGrade = (value) => {
-      let closestIndex = 0;
-      let closestDifference = Math.abs(value - scores[0]);
-
-      scores.forEach((score, index) => {
-        const difference = Math.abs(value - score);
-        if (difference < closestDifference) {
-          closestIndex = index;
-          closestDifference = difference;
-        }
-      });
-
-      return grades[closestIndex];
-    };
-
-    // Handle reference score
-    const referenceScore = parseFloat(refElement.dataset.referenceScore);
-    const refPosition = calculatePosition(referenceScore);
-    refElement.style.left = `${refPosition}%`;
-
-    // Handle risk range
-    const riskRange = parseFloat(gradientElement.dataset.riskRange);
-    const riskPosition = calculatePosition(riskRange);
-    gradientElement.style.left = `${riskPosition}%`;
-
-    // Determine the overall rating and set the data-overall-rating attribute
-    const overallRating = findClosestGrade(riskRange);
-    result.setAttribute('data-overall-rating', overallRating);
-
-    // Update the overall safety rating for featured results
-    if (result.classList.contains('sut-result--featured')) {
-      const overallSafetyRating = document.getElementById('overall-safety-rating');
-      const overallScore = document.getElementById('overall-score');
-
-      if (overallSafetyRating && overallScore) {
-        overallSafetyRating.textContent = overallRating;
-        overallScore.setAttribute('data-risk', overallRating);
-      }
-    }
-  });
-
-
-</script>
-
-
-
-
-
-
   <section class="wrapper my-4">
       <hr />
       <h3>How to interpret the results</h3>
@@ -339,5 +265,71 @@
     </a>
   </section>
 
+  <script>
+    document.querySelectorAll('.sut-result').forEach((result) => {
+      const scores = Array.from(
+        result.querySelectorAll('.sut-results-reference__scores div')
+      ).map((el) => parseFloat(el.textContent));
+
+      const grades = ['Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
+      const refElement = result.querySelector('.sut-results-reference__line .ref');
+      const gradientElement = result.querySelector('.js-range-gradient');
+
+      // Function to calculate percentage position
+      const calculatePosition = (value) => {
+        for (let i = 0; i < scores.length - 1; i++) {
+          if (value <= scores[i] && value >= scores[i + 1]) {
+            const rangeStart = scores[i];
+            const rangeEnd = scores[i + 1];
+            const rangeWidth = rangeStart - rangeEnd;
+            const relativePosition = (rangeStart - value) / rangeWidth;
+            return ((i + relativePosition) / (scores.length - 1)) * 100;
+          }
+        }
+        return value >= scores[0] ? 0 : 100; // Clamp to edges if out of bounds
+      };
+
+      // Function to find the closest grade
+      const findClosestGrade = (value) => {
+        let closestIndex = 0;
+        let closestDifference = Math.abs(value - scores[0]);
+
+        scores.forEach((score, index) => {
+          const difference = Math.abs(value - score);
+          if (difference < closestDifference) {
+            closestIndex = index;
+            closestDifference = difference;
+          }
+        });
+
+        return grades[closestIndex];
+      };
+
+      // Handle reference score
+      const referenceScore = parseFloat(refElement.dataset.referenceScore);
+      const refPosition = calculatePosition(referenceScore);
+      refElement.style.left = `${refPosition}%`;
+
+      // Handle risk range
+      const riskRange = parseFloat(gradientElement.dataset.riskRange);
+      const riskPosition = calculatePosition(riskRange);
+      gradientElement.style.left = `${riskPosition}%`;
+
+      // Determine the overall rating and set the data-overall-rating attribute
+      const overallRating = findClosestGrade(riskRange);
+      result.setAttribute('data-overall-rating', overallRating);
+
+      // Update the overall safety rating for featured results
+      if (result.classList.contains('sut-result--featured')) {
+        const overallSafetyRating = document.getElementById('overall-safety-rating');
+        const overallScore = document.getElementById('overall-score');
+
+        if (overallSafetyRating && overallScore) {
+          overallSafetyRating.textContent = overallRating;
+          overallScore.setAttribute('data-risk', overallRating);
+        }
+      }
+    });
+  </script>
 
 <?php include('footer.php'); ?>
