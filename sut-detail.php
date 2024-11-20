@@ -34,7 +34,7 @@
       <div class="sut-result-results">
         <p>Overall</p>
         <div class="sut-result-results__gradient">
-          <div class="sut-result-results__risk-range js-range-gradient" data-risk-range="2.6">
+          <div class="sut-result-results__risk-range js-range-gradient" data-risk-range="7">
           </div>
         </div>
       </div>
@@ -289,20 +289,20 @@
         return value >= scores[0] ? 0 : 100; // Clamp to edges if out of bounds
       };
 
-      // Function to find the closest grade
-      const findClosestGrade = (value) => {
-        let closestIndex = 0;
-        let closestDifference = Math.abs(value - scores[0]);
-
-        scores.forEach((score, index) => {
-          const difference = Math.abs(value - score);
-          if (difference < closestDifference) {
-            closestIndex = index;
-            closestDifference = difference;
-          }
-        });
-
-        return grades[closestIndex];
+      // Function to determine the grade based on refined rules
+      const determineGrade = (value) => {
+        if (value <= scores[0] && value > scores[1]) {
+          return 'Poor';
+        } else if (value <= scores[1] && value > scores[2]) {
+          return 'Fair';
+        } else if (value <= scores[2] && value > scores[3]) {
+          return 'Good';
+        } else if (value <= scores[3] && value > scores[4]) {
+          return 'Very Good';
+        } else if (value <= scores[4] && value >= scores[5]) {
+          return 'Excellent';
+        }
+        return 'Unknown'; // Default fallback if out of range
       };
 
       // Handle reference score
@@ -316,7 +316,7 @@
       gradientElement.style.left = `${riskPosition}%`;
 
       // Determine the overall rating and set the data-overall-rating attribute
-      const overallRating = findClosestGrade(riskRange);
+      const overallRating = determineGrade(riskRange);
       result.setAttribute('data-overall-rating', overallRating);
 
       // Update the overall safety rating for featured results
