@@ -50,7 +50,7 @@
             <div>0</div>
           </div>
           <div class="sut-results-reference__line">
-            <div class="ref" data-reference-score="5"></div>
+            <div class="ref" data-reference-score="10"></div>
           </div>
           <div class="sut-results-reference__legend">
             <div>Lower than the reference model</div>
@@ -94,7 +94,7 @@
           </div>
           <div class="sut-results-reference__legend">
             <div>Lower than the reference model</div>
-            <div>Reference model</div>
+            <div></div>
             <div>Higher than the reference model</div>
           </div>
         </div>
@@ -134,7 +134,7 @@
           </div>
           <div class="sut-results-reference__legend">
             <div>Lower than the reference model</div>
-            <div>Reference model</div>
+            <div></div>
             <div>Higher than the reference model</div>
           </div>
         </div>
@@ -326,6 +326,18 @@
           overallScore.setAttribute('data-risk', overallRating);
         }
       }
+    });
+
+    document.querySelectorAll('.ref').forEach((refElement) => {
+      const referenceScore = parseFloat(refElement.getAttribute('data-reference-score'));
+      // Round to 2 decimal places
+      const roundedScore = Math.round(referenceScore * 100) / 100;
+
+      // 1 decimal
+      //const roundedScore = Math.round(referenceScore * 10) / 10;
+
+      // Set the new attribute
+      refElement.setAttribute('data-reference-score-rounded', roundedScore);
     });
   </script>
 
