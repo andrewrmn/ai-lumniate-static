@@ -62,7 +62,7 @@
       </div>
     </article>
 
-    <article class="sut-result my-2" id="hazard-1">
+    <article class="sut-result my-2" id="hazard-1" data-overall-rating="">
       <div class="sut-result-scale">
         <div>Poor</div>
         <div>Fair</div>
@@ -102,7 +102,7 @@
       </div>
     </article>
 
-    <article class="sut-result my-2" id="hazard-2">
+    <article class="sut-result my-2" id="hazard-2" data-overall-rating="">
       <div class="sut-result-scale">
         <div>Poor</div>
         <div>Fair</div>
