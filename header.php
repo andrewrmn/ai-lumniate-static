@@ -32,7 +32,7 @@
       --spacing-3: clamp(48px, calc(3vw + 30px), 72px);
       --spacing-4: clamp(72px, calc(4vw + 40px), 96px);
 
-      --risk-excellent: #00533E;
+      --risk-excellent: #034EA2;
       --risk-very-good: #00926B;
       --risk-good: #12CA98;
       --risk-fair: #FFB024;

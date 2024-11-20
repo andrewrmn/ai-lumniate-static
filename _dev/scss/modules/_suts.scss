@@ -71,7 +71,8 @@
 
 .sut-result-results__risk-range {
   position: absolute;
-  width: 200px;
+  width: 17%;
+  min-width: 70px;
   height: 12px;
   top: 50%;
   transform: translate3d(-50%, -50%, 0);
@@ -131,6 +132,11 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 0 12px;
+
+  @include stop-at($large) {
+    padding: 0;
+  }
 
   > * {
     font-size: 14px;
@@ -207,8 +213,6 @@
   .sut-result-results__gradient {
     height: 64px;
     border-radius: 16px;
-
-
   }
 
   .sut-result-results__risk-range {

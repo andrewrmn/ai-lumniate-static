@@ -21,7 +21,6 @@
       </div>
     </div>
 
-
     <article class="sut-result sut-result--featured my-3" data-overall-rating="">
       <div class="sut-result-scale">
         <div>Poor</div>
@@ -34,7 +33,7 @@
       <div class="sut-result-results">
         <p>Overall</p>
         <div class="sut-result-results__gradient">
-          <div class="sut-result-results__risk-range js-range-gradient" data-risk-range="7">
+          <div class="sut-result-results__risk-range js-range-gradient" data-risk-estimate="8">
           </div>
         </div>
       </div>
@@ -62,7 +61,7 @@
       </div>
     </article>
 
-    <article class="sut-result my-2" id="hazard-1" data-overall-rating="">
+    <article class="sut-result my-3" data-overall-rating="">
       <div class="sut-result-scale">
         <div>Poor</div>
         <div>Fair</div>
@@ -74,7 +73,7 @@
       <div class="sut-result-results">
         <p>Hazard 1</p>
         <div class="sut-result-results__gradient">
-          <div class="sut-result-results__risk-range js-range-gradient" data-risk-range="20">
+          <div class="sut-result-results__risk-range js-range-gradient" data-risk-estimate="2.5">
           </div>
         </div>
       </div>
@@ -91,7 +90,7 @@
             <div>0</div>
           </div>
           <div class="sut-results-reference__line">
-            <div class="ref" data-reference-score="5"></div>
+            <div class="ref" data-reference-score="3"></div>
           </div>
           <div class="sut-results-reference__legend">
             <div>Lower than the reference model</div>
@@ -102,7 +101,7 @@
       </div>
     </article>
 
-    <article class="sut-result my-2" id="hazard-2" data-overall-rating="">
+    <article class="sut-result my-3" data-overall-rating="">
       <div class="sut-result-scale">
         <div>Poor</div>
         <div>Fair</div>
@@ -114,7 +113,7 @@
       <div class="sut-result-results">
         <p>Hazard 2</p>
         <div class="sut-result-results__gradient">
-          <div class="sut-result-results__risk-range js-range-gradient" data-risk-range="4">
+          <div class="sut-result-results__risk-range js-range-gradient" data-risk-estimate="22">
           </div>
         </div>
       </div>
@@ -124,14 +123,14 @@
         <div>
           <div class="sut-results-reference__scores">
             <div>100</div>
-            <div>24</div>
-            <div>12</div>
+            <div>32</div>
+            <div>16</div>
             <div>4</div>
             <div>0.1</div>
             <div>0</div>
           </div>
           <div class="sut-results-reference__line">
-            <div class="ref" data-reference-score="8"></div>
+            <div class="ref" data-reference-score="3"></div>
           </div>
           <div class="sut-results-reference__legend">
             <div>Lower than the reference model</div>
@@ -141,9 +140,7 @@
         </div>
       </div>
     </article>
-
   </section>
-
 
   <section class="wrapper my-4">
       <hr />
@@ -311,12 +308,12 @@
       refElement.style.left = `${refPosition}%`;
 
       // Handle risk range
-      const riskRange = parseFloat(gradientElement.dataset.riskRange);
-      const riskPosition = calculatePosition(riskRange);
+      const riskEstimate = parseFloat(gradientElement.dataset.riskEstimate);
+      const riskPosition = calculatePosition(riskEstimate);
       gradientElement.style.left = `${riskPosition}%`;
 
       // Determine the overall rating and set the data-overall-rating attribute
-      const overallRating = determineGrade(riskRange);
+      const overallRating = determineGrade(riskEstimate);
       result.setAttribute('data-overall-rating', overallRating);
 
       // Update the overall safety rating for featured results

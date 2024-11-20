@@ -16,7 +16,7 @@
 
   <div class="wrapper site-footer__bottom">
     <div class="site-footer__legal mb-4 mb-md-0">
-      <small>© <span id="legal-year"></span> MLCommons, MLPerf and MLCube are registered trademarks of MLCommons Association.</small>
+      <small>© <span id="legal-year"></span> MLCommons. MLCommons, MLPerf, and MLCube are registered trademarks of MLCommons Association.</small>
       <script>const currentYear = new Date().getFullYear();
         document.getElementById('legal-year').textContent = currentYear;</script>
       <ul>
