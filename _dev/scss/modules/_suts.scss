@@ -71,10 +71,10 @@
 
 .sut-result-results__risk-range {
   position: absolute;
-  width: 180px;
+  width: 200px;
   height: 12px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate3d(-50%, -50%, 0);
   background: linear-gradient(90deg, rgba(0,0,0,0) 10%, rgba(0,0,0,1) 35%, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 90%);
   left: 60%;
 }
@@ -111,14 +111,14 @@
 .sut-results-reference__scores {
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: space-between;
+  //text-align: center;
 
   > * {
     font-size: 14px;
     color: $blue-gray;
-    flex-grow: 1;
-    flex-basis: 0;
+    //flex-grow: 1;
+    //flex-basis: 0;
 
     @include stop-at($medium) {
       font-size: 10px;

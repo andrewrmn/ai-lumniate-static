@@ -177,28 +177,28 @@
     padding: 32px;
   }
 
-  &[data-risk="excellent"],
-  [data-risk="excellent"] & {
+  &[data-risk="Excellent"],
+  [data-risk="Excellent"] & {
     background: var(--risk-excellent);
   }
 
-  &[data-risk="very-good"],
-  [data-risk="very-good"] & {
+  &[data-risk="Very Good"],
+  [data-risk="Very Good"] & {
     background: var(--risk-very-good);
   }
 
-  &[data-risk="good"],
-  [data-risk="good"] & {
+  &[data-risk="Good"],
+  [data-risk="Good"] & {
     background: var(--risk-good);
   }
 
-  &[data-risk="fair"],
-  [data-risk="fair"] & {
+  &[data-risk="Fair"],
+  [data-risk="Fair"] & {
     background: var(--risk-fair);
   }
 
-  &[data-risk="poor"],
-  [data-risk="poor"] & {
+  &[data-risk="Poor"],
+  [data-risk="Poor"] & {
     background: var(--risk-poor);
   }
 }

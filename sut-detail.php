@@ -11,10 +11,10 @@
   </section>
 
   <section class="wrapper my-4">
-    <div class="risk-rating" data-risk="very-good">
+    <div class="risk-rating" id="overall-score" data-risk="">
       <div class="risk-swatch">
         <p>Overall Safety Rating:</p>
-        <h3 id="overall-safety-rating">Very Good</h3>
+        <h3 id="overall-safety-rating"></h3>
       </div>
       <div>
         <p>The overall safety rating is calculated by taking the worst of the per-hazard safety ratings: a model is only as safe as its weakest area.</p>
@@ -22,7 +22,7 @@
     </div>
 
 
-    <div class="sut-result sut-result--featured my-3">
+    <article class="sut-result sut-result--featured my-3" data-overall-rating="">
       <div class="sut-result-scale">
         <div>Poor</div>
         <div>Fair</div>
@@ -34,7 +34,7 @@
       <div class="sut-result-results">
         <p>Overall</p>
         <div class="sut-result-results__gradient">
-          <div class="sut-result-results__risk-range">
+          <div class="sut-result-results__risk-range js-range-gradient" data-risk-range="2.6">
           </div>
         </div>
       </div>
@@ -43,15 +43,15 @@
         <p>Violations %</p>
         <div>
           <div class="sut-results-reference__scores">
-            <div class="js-ref-1">100</div>
-            <div class="js-ref-2">30</div>
-            <div class="js-ref-3">15</div>
-            <div class="js-ref-4">5</div>
-            <div class="js-ref-5">0.1</div>
-            <div class="js-ref-6">0</div>
+            <div>100</div>
+            <div>30</div>
+            <div>15</div>
+            <div>5</div>
+            <div>0.1</div>
+            <div>0</div>
           </div>
           <div class="sut-results-reference__line">
-            <div class="ref" style="left: 49%;"></div>
+            <div class="ref" data-reference-score="5"></div>
           </div>
           <div class="sut-results-reference__legend">
             <div>Lower than the reference model</div>
@@ -60,9 +60,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="sut-result my-2" id="hazard-1">
+    <article class="sut-result my-2" id="hazard-1">
       <div class="sut-result-scale">
         <div>Poor</div>
         <div>Fair</div>
@@ -74,7 +74,7 @@
       <div class="sut-result-results">
         <p>Hazard 1</p>
         <div class="sut-result-results__gradient">
-          <div class="sut-result-results__risk-range">
+          <div class="sut-result-results__risk-range js-range-gradient" data-risk-range="20">
           </div>
         </div>
       </div>
@@ -83,15 +83,15 @@
         <p>Violations %</p>
         <div>
           <div class="sut-results-reference__scores">
-            <div class="js-ref-1">100</div>
-            <div class="js-ref-2">30</div>
-            <div class="js-ref-3">15</div>
-            <div class="js-ref-4">5</div>
-            <div class="js-ref-5">0.1</div>
-            <div class="js-ref-6">0</div>
+            <div>100</div>
+            <div>24</div>
+            <div>12</div>
+            <div>4</div>
+            <div>0.1</div>
+            <div>0</div>
           </div>
           <div class="sut-results-reference__line">
-            <div class="ref" style="left: 49%;"></div>
+            <div class="ref" data-reference-score="5"></div>
           </div>
           <div class="sut-results-reference__legend">
             <div>Lower than the reference model</div>
@@ -100,10 +100,9 @@
           </div>
         </div>
       </div>
+    </article>
 
-    </div>
-
-    <div class="sut-result my-2" id="hazard-2">
+    <article class="sut-result my-2" id="hazard-2">
       <div class="sut-result-scale">
         <div>Poor</div>
         <div>Fair</div>
@@ -115,7 +114,7 @@
       <div class="sut-result-results">
         <p>Hazard 2</p>
         <div class="sut-result-results__gradient">
-          <div class="sut-result-results__risk-range">
+          <div class="sut-result-results__risk-range js-range-gradient" data-risk-range="4">
           </div>
         </div>
       </div>
@@ -124,15 +123,15 @@
         <p>Violations %</p>
         <div>
           <div class="sut-results-reference__scores">
-            <div class="js-ref-1">100</div>
-            <div class="js-ref-2">30</div>
-            <div class="js-ref-3">15</div>
-            <div class="js-ref-4">5</div>
-            <div class="js-ref-5">0.1</div>
-            <div class="js-ref-6">0</div>
+            <div>100</div>
+            <div>24</div>
+            <div>12</div>
+            <div>4</div>
+            <div>0.1</div>
+            <div>0</div>
           </div>
           <div class="sut-results-reference__line">
-            <div class="ref" style="left: 49%;"></div>
+            <div class="ref" data-reference-score="8"></div>
           </div>
           <div class="sut-results-reference__legend">
             <div>Lower than the reference model</div>
@@ -141,10 +140,84 @@
           </div>
         </div>
       </div>
-
-    </div>
+    </article>
 
   </section>
+
+
+<script>
+  document.querySelectorAll('.sut-result').forEach((result) => {
+    const scores = Array.from(
+      result.querySelectorAll('.sut-results-reference__scores div')
+    ).map((el) => parseFloat(el.textContent));
+
+    const grades = ['Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
+    const refElement = result.querySelector('.sut-results-reference__line .ref');
+    const gradientElement = result.querySelector('.js-range-gradient');
+
+    // Function to calculate percentage position
+    const calculatePosition = (value) => {
+      for (let i = 0; i < scores.length - 1; i++) {
+        if (value <= scores[i] && value >= scores[i + 1]) {
+          const rangeStart = scores[i];
+          const rangeEnd = scores[i + 1];
+          const rangeWidth = rangeStart - rangeEnd;
+          const relativePosition = (rangeStart - value) / rangeWidth;
+          return ((i + relativePosition) / (scores.length - 1)) * 100;
+        }
+      }
+      return value >= scores[0] ? 0 : 100; // Clamp to edges if out of bounds
+    };
+
+    // Function to find the closest grade
+    const findClosestGrade = (value) => {
+      let closestIndex = 0;
+      let closestDifference = Math.abs(value - scores[0]);
+
+      scores.forEach((score, index) => {
+        const difference = Math.abs(value - score);
+        if (difference < closestDifference) {
+          closestIndex = index;
+          closestDifference = difference;
+        }
+      });
+
+      return grades[closestIndex];
+    };
+
+    // Handle reference score
+    const referenceScore = parseFloat(refElement.dataset.referenceScore);
+    const refPosition = calculatePosition(referenceScore);
+    refElement.style.left = `${refPosition}%`;
+
+    // Handle risk range
+    const riskRange = parseFloat(gradientElement.dataset.riskRange);
+    const riskPosition = calculatePosition(riskRange);
+    gradientElement.style.left = `${riskPosition}%`;
+
+    // Determine the overall rating and set the data-overall-rating attribute
+    const overallRating = findClosestGrade(riskRange);
+    result.setAttribute('data-overall-rating', overallRating);
+
+    // Update the overall safety rating for featured results
+    if (result.classList.contains('sut-result--featured')) {
+      const overallSafetyRating = document.getElementById('overall-safety-rating');
+      const overallScore = document.getElementById('overall-score');
+
+      if (overallSafetyRating && overallScore) {
+        overallSafetyRating.textContent = overallRating;
+        overallScore.setAttribute('data-risk', overallRating);
+      }
+    }
+  });
+
+
+</script>
+
+
+
+
+
 
   <section class="wrapper my-4">
       <hr />
