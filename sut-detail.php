@@ -33,7 +33,7 @@
       <div class="sut-result-results">
         <p>Overall</p>
         <div class="sut-result-results__gradient">
-          <div class="sut-result-results__risk-range js-range-gradient" data-risk-upper="20" data-risk-estimate="15.1" data-risk-lower="5">
+          <div class="sut-result-results__risk-range js-range-gradient" data-risk-upper="25" data-risk-estimate="8" data-risk-lower="4">
           </div>
         </div>
       </div>
@@ -74,7 +74,7 @@
       <div class="sut-result-results">
         <p>Hazard 1</p>
         <div class="sut-result-results__gradient">
-          <div class="sut-result-results__risk-range js-range-gradient" data-risk-upper="13" data-risk-estimate="2" data-risk-lower=".8">
+          <div class="sut-result-results__risk-range js-range-gradient" data-risk-upper="4" data-risk-estimate=".08" data-risk-lower=".02">
           </div>
         </div>
       </div>
@@ -95,7 +95,7 @@
           </div>
           <div class="sut-results-reference__legend">
             <div>Lower than the reference model</div>
-            <div>Reference model</div>
+            <div></div>
             <div>Higher than the reference model</div>
           </div>
         </div>
@@ -114,7 +114,7 @@
       <div class="sut-result-results">
         <p>Hazard 2</p>
         <div class="sut-result-results__gradient">
-          <div class="sut-result-results__risk-range js-range-gradient" data-risk-upper="48" data-risk-estimate="22" data-risk-lower="13">
+          <div class="sut-result-results__risk-range js-range-gradient" data-risk-upper="68" data-risk-estimate="60" data-risk-lower="24">
           </div>
         </div>
       </div>
@@ -135,7 +135,7 @@
           </div>
           <div class="sut-results-reference__legend">
             <div>Lower than the reference model</div>
-            <div>Reference model</div>
+            <div></div>
             <div>Higher than the reference model</div>
           </div>
         </div>
@@ -303,9 +303,9 @@
         const gradientOffset = startPercentage;
 
         // Build and apply the gradient
-        const gradient = `linear-gradient(90deg, rgba(0, 0, 0, 0.00) 0%, #000 ${
+        const gradient = `linear-gradient(90deg, rgba(0, 0, 0, 0.00) 5%, #000 ${
           ((middlePercentage - startPercentage) / gradientWidth) * 100
-        }%, rgba(0, 0, 0, 0.00) 100%)`;
+        }%, rgba(0, 0, 0, 0.00) 95%)`;
 
         gradientElement.style.position = 'absolute';
         gradientElement.style.left = `${gradientOffset}%`;
