@@ -71,13 +71,15 @@
 
 .sut-result-results__risk-range {
   position: absolute;
-  width: 17%;
-  min-width: 70px;
+  //width: 17%;
+  //min-width: 70px;
   height: 12px;
-  top: 50%;
-  transform: translate3d(-50%, -50%, 0);
-  background: linear-gradient(90deg, rgba(0,0,0,0) 10%, rgba(0,0,0,1) 35%, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 90%);
-  left: 60%;
+  top: calc(50% - 6px);
+  //transform: translate3d(0, -50%, 0);
+  //background: linear-gradient(90deg, rgba(0,0,0,0) 10%, rgba(0,0,0,1) 35%, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 90%);
+  //left: 60%;
+
+  //transform: translateX(-50%);
 }
 
 
@@ -170,7 +172,20 @@
     background: $black;
     top: calc(50% - 6px);
 
-
+    &:before {
+      content: attr(data-reference-score-rounded);
+      position: absolute;
+      bottom: calc(100% + 4px);
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22' fill='none'%3E%3Cpath d='M0 3C0 1.34315 1.34315 0 3 0H19C20.6569 0 22 1.34315 22 3V12.4723C22 13.4321 21.5407 14.334 20.7645 14.8985L12.7645 20.7167C11.7126 21.4818 10.2874 21.4818 9.23549 20.7167L1.23548 14.8985C0.459252 14.334 0 13.4321 0 12.4723V3Z' fill='%23034EA2'/%3E%3C/svg%3E") center / cover no-repeat;
+      width: 26px;
+      height: 26px;
+      text-align: center;
+      left: calc(50% - 13px);
+      color: $white;
+      font-size: 9px;
+      font-weight: 500;
+      padding-top: 3px;
+    }
   }
 
   &:before,
@@ -219,20 +234,6 @@
 
   .sut-result-results__risk-range {
     height: 28px;
-  }
-
-  .sut-results-reference__line .ref:before {
-    content: attr(data-reference-score-rounded);
-    position: absolute;
-    bottom: calc(100% + 4px);
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22' fill='none'%3E%3Cpath d='M0 3C0 1.34315 1.34315 0 3 0H19C20.6569 0 22 1.34315 22 3V12.4723C22 13.4321 21.5407 14.334 20.7645 14.8985L12.7645 20.7167C11.7126 21.4818 10.2874 21.4818 9.23549 20.7167L1.23548 14.8985C0.459252 14.334 0 13.4321 0 12.4723V3Z' fill='%23034EA2'/%3E%3C/svg%3E") center / cover no-repeat;
-    width: 26px;
-    height: 26px;
-    text-align: center;
-    left: calc(50% - 13px);
-    color: $white;
-    font-size: 9px;
-    font-weight: 500;
-    padding-top: 3px;
+    top: calc(50% - 14px);
   }
 }

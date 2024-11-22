@@ -33,7 +33,7 @@
       <div class="sut-result-results">
         <p>Overall</p>
         <div class="sut-result-results__gradient">
-          <div class="sut-result-results__risk-range js-range-gradient" data-risk-estimate="8">
+          <div class="sut-result-results__risk-range js-range-gradient" data-risk-upper="20" data-risk-estimate="15.1" data-risk-lower="5">
           </div>
         </div>
       </div>
@@ -61,6 +61,7 @@
       </div>
     </article>
 
+
     <article class="sut-result my-3" data-overall-rating="">
       <div class="sut-result-scale">
         <div>Poor</div>
@@ -73,7 +74,7 @@
       <div class="sut-result-results">
         <p>Hazard 1</p>
         <div class="sut-result-results__gradient">
-          <div class="sut-result-results__risk-range js-range-gradient" data-risk-estimate="2.5">
+          <div class="sut-result-results__risk-range js-range-gradient" data-risk-upper="13" data-risk-estimate="2" data-risk-lower=".8">
           </div>
         </div>
       </div>
@@ -83,9 +84,9 @@
         <div>
           <div class="sut-results-reference__scores">
             <div>100</div>
-            <div>24</div>
-            <div>12</div>
-            <div>4</div>
+            <div>30</div>
+            <div>15</div>
+            <div>5</div>
             <div>0.1</div>
             <div>0</div>
           </div>
@@ -94,7 +95,7 @@
           </div>
           <div class="sut-results-reference__legend">
             <div>Lower than the reference model</div>
-            <div></div>
+            <div>Reference model</div>
             <div>Higher than the reference model</div>
           </div>
         </div>
@@ -113,7 +114,7 @@
       <div class="sut-result-results">
         <p>Hazard 2</p>
         <div class="sut-result-results__gradient">
-          <div class="sut-result-results__risk-range js-range-gradient" data-risk-estimate="22">
+          <div class="sut-result-results__risk-range js-range-gradient" data-risk-upper="48" data-risk-estimate="22" data-risk-lower="13">
           </div>
         </div>
       </div>
@@ -123,18 +124,18 @@
         <div>
           <div class="sut-results-reference__scores">
             <div>100</div>
-            <div>32</div>
-            <div>16</div>
-            <div>4</div>
+            <div>30</div>
+            <div>15</div>
+            <div>5</div>
             <div>0.1</div>
             <div>0</div>
           </div>
           <div class="sut-results-reference__line">
-            <div class="ref" data-reference-score="3"></div>
+            <div class="ref" data-reference-score="10"></div>
           </div>
           <div class="sut-results-reference__legend">
             <div>Lower than the reference model</div>
-            <div></div>
+            <div>Reference model</div>
             <div>Higher than the reference model</div>
           </div>
         </div>
@@ -264,15 +265,17 @@
 
   <script>
     document.querySelectorAll('.sut-result').forEach((result) => {
+      const gradientElement = result.querySelector('.sut-result-results__risk-range');
+      const refElement = result.querySelector('.sut-results-reference__line .ref');
+
+      // Parse the risk data
       const scores = Array.from(
         result.querySelectorAll('.sut-results-reference__scores div')
       ).map((el) => parseFloat(el.textContent));
 
       const grades = ['Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
-      const refElement = result.querySelector('.sut-results-reference__line .ref');
-      const gradientElement = result.querySelector('.js-range-gradient');
 
-      // Function to calculate percentage position
+      // Helper: Calculate position as a percentage on the scale
       const calculatePosition = (value) => {
         for (let i = 0; i < scores.length - 1; i++) {
           if (value <= scores[i] && value >= scores[i + 1]) {
@@ -286,7 +289,43 @@
         return value >= scores[0] ? 0 : 100; // Clamp to edges if out of bounds
       };
 
-      // Function to determine the grade based on refined rules
+      // 1. Handle Gradient
+      if (gradientElement) {
+        const upper = parseFloat(gradientElement.dataset.riskUpper);
+        const estimate = parseFloat(gradientElement.dataset.riskEstimate);
+        const lower = parseFloat(gradientElement.dataset.riskLower);
+
+        const startPercentage = calculatePosition(upper);
+        const endPercentage = calculatePosition(lower);
+        const middlePercentage = calculatePosition(estimate);
+
+        const gradientWidth = endPercentage - startPercentage;
+        const gradientOffset = startPercentage;
+
+        // Build and apply the gradient
+        const gradient = `linear-gradient(90deg, rgba(0, 0, 0, 0.00) 0%, #000 ${
+          ((middlePercentage - startPercentage) / gradientWidth) * 100
+        }%, rgba(0, 0, 0, 0.00) 100%)`;
+
+        gradientElement.style.position = 'absolute';
+        gradientElement.style.left = `${gradientOffset}%`;
+        gradientElement.style.width = `${gradientWidth}%`;
+        gradientElement.style.background = gradient;
+      }
+
+      // 2. Handle Reference Point
+      if (refElement) {
+        const referenceScore = parseFloat(refElement.dataset.referenceScore);
+        const refPosition = calculatePosition(referenceScore);
+        refElement.style.left = `${refPosition}%`;
+
+        // Add rounded score as a separate attribute
+        const roundedScore = Math.round(referenceScore * 10) / 10;
+        refElement.setAttribute('data-reference-score-rounded', roundedScore);
+      }
+
+      // 3. Determine Overall Score and Grade
+      const riskEstimate = parseFloat(gradientElement.dataset.riskEstimate);
       const determineGrade = (value) => {
         if (value <= scores[0] && value > scores[1]) {
           return 'Poor';
@@ -299,24 +338,13 @@
         } else if (value <= scores[4] && value >= scores[5]) {
           return 'Excellent';
         }
-        return 'Unknown'; // Default fallback if out of range
+        return 'Unknown'; // Default fallback
       };
 
-      // Handle reference score
-      const referenceScore = parseFloat(refElement.dataset.referenceScore);
-      const refPosition = calculatePosition(referenceScore);
-      refElement.style.left = `${refPosition}%`;
-
-      // Handle risk range
-      const riskEstimate = parseFloat(gradientElement.dataset.riskEstimate);
-      const riskPosition = calculatePosition(riskEstimate);
-      gradientElement.style.left = `${riskPosition}%`;
-
-      // Determine the overall rating and set the data-overall-rating attribute
       const overallRating = determineGrade(riskEstimate);
       result.setAttribute('data-overall-rating', overallRating);
 
-      // Update the overall safety rating for featured results
+      // 4. Update Overall Safety Rating for Featured Results
       if (result.classList.contains('sut-result--featured')) {
         const overallSafetyRating = document.getElementById('overall-safety-rating');
         const overallScore = document.getElementById('overall-score');
@@ -328,17 +356,8 @@
       }
     });
 
-    document.querySelectorAll('.ref').forEach((refElement) => {
-      const referenceScore = parseFloat(refElement.getAttribute('data-reference-score'));
-      // Round to 2 decimal places
-      const roundedScore = Math.round(referenceScore * 100) / 100;
 
-      // 1 decimal
-      //const roundedScore = Math.round(referenceScore * 10) / 10;
 
-      // Set the new attribute
-      refElement.setAttribute('data-reference-score-rounded', roundedScore);
-    });
   </script>
 
 <?php include('footer.php'); ?>
