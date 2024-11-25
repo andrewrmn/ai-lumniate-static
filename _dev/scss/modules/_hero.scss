@@ -8,12 +8,12 @@
   color: $white;
   width: 100%;
   max-width: 100%;
+  position: relative;
 }
 
 .hero__inner {
   display: flex;
   flex-direction: column;
-
 
   @include start-at($medium) {
     @include wrapper;
@@ -33,7 +33,6 @@
 .hero__title {
   padding: 96px 0;
 
-
   img {
     margin-bottom: 18px;
     max-width: 70%;
@@ -41,6 +40,8 @@
 
   @include stop-at($medium) {
     @include wrapper;
+
+    padding: 120px 0 96px;
   }
 }
 
@@ -54,5 +55,59 @@
   @include start-at($medium) {
     padding: 48px 32px;
     align-self: flex-end;
+  }
+}
+
+
+// ----------------------------------------
+// Breadcrumbs
+// ----------------------------------------
+
+.hero-breadcrumbs {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+
+  @include wrapper;
+
+  ul {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    grid-gap: 12px;
+    list-style-type: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 14px;
+
+    li {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  }
+
+  li:after {
+    content: '>';
+    margin: 0 0 0 12px;
+  }
+  li:before {
+    display: none !important;
+  }
+
+  li:last-child {
+    opacity: .8;
+
+    &:after {
+      display: none;
+    }
+  }
+
+
+
+  a {
+    color: $white;
   }
 }

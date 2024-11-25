@@ -24,28 +24,23 @@
     background: $gray;
   }
 
-  &[data-risk="Excellent"]:before,
-  &[data-risk="excellent"]:before {
+  &[data-risk="5"]:before  {
     background: var(--risk-excellent);
   }
 
-  &[data-risk="Very Good"]:before,
-  &[data-risk="very-good"]:before {
+  &[data-risk="4"]:before  {
     background: var(--risk-very-good);
   }
 
-  &[data-risk="Good"]:before,
-  &[data-risk="good"]:before {
+  &[data-risk="3"]:before  {
     background: var(--risk-good);
   }
 
-  &[data-risk="Fair"]:before,
-  &[data-risk="fair"]:before {
+  &[data-risk="2"]:before {
     background: var(--risk-fair);
   }
 
-  &[data-risk="Poor"]:before,
-  &[data-risk="poor"]:before {
+  &[data-risk="1"]:before {
     background: var(--risk-poor);
   }
 }
@@ -103,54 +98,28 @@
     background: $gray;
   }
 
-  &[data-risk="Excellent"]:before,
-  &[data-risk="excellent"]:before {
+  &[data-risk="5"]:before,
+  &[data-risk="5"] .risk-swatch{
     background: var(--risk-excellent);
   }
 
-  &[data-risk="Very Good"]:before,
-  &[data-risk="very-good"]:before {
+  &[data-risk="4"]:before,
+  &[data-risk="4"] .risk-swatch{
     background: var(--risk-very-good);
   }
 
-  &[data-risk="Good"]:before,
-  &[data-risk="good"]:before {
+  &[data-risk="3"]:before,
+  &[data-risk="3"] .risk-swatch{
     background: var(--risk-good);
   }
 
-  &[data-risk="Fair"]:before,
-  &[data-risk="fair"]:before {
+  &[data-risk="2"]:before,
+  &[data-risk="2"] .risk-swatch {
     background: var(--risk-fair);
   }
 
-  &[data-risk="Poor"]:before,
-  &[data-risk="poor"]:before {
-    background: var(--risk-poor);
-  }
-
-
-  &[data-risk="Excellent"] .risk-swatch,
-  &[data-risk="excellent"].risk-swatch {
-    background: var(--risk-excellent);
-  }
-
-  &[data-risk="Very Good"].risk-swatch,
-  &[data-risk="very-good"].risk-swatch {
-    background: var(--risk-very-good);
-  }
-
-  &[data-risk="Good"].risk-swatch,
-  &[data-risk="good"].risk-swatch {
-    background: var(--risk-good);
-  }
-
-  &[data-risk="Fair"].risk-swatch,
-  &[data-risk="fair"].risk-swatch {
-    background: var(--risk-fair);
-  }
-
-  &[data-risk="Poor"].risk-swatch,
-  &[data-risk="poor"].risk-swatch {
+  &[data-risk="1"]:before,
+  &[data-risk="1"] .risk-swatch {
     background: var(--risk-poor);
   }
 }
@@ -177,28 +146,28 @@
     padding: 32px;
   }
 
-  &[data-risk="Excellent"],
-  [data-risk="Excellent"] & {
+  &[data-risk="5"],
+  [data-risk="5"] & {
     background: var(--risk-excellent);
   }
 
-  &[data-risk="Very Good"],
-  [data-risk="Very Good"] & {
+  &[data-risk="4"],
+  [data-risk="4"] & {
     background: var(--risk-very-good);
   }
 
-  &[data-risk="Good"],
-  [data-risk="Good"] & {
+  &[data-risk="3"],
+  [data-risk="3"] & {
     background: var(--risk-good);
   }
 
-  &[data-risk="Fair"],
-  [data-risk="Fair"] & {
+  &[data-risk="2"],
+  [data-risk="2"] & {
     background: var(--risk-fair);
   }
 
-  &[data-risk="Poor"],
-  [data-risk="Poor"] & {
+  &[data-risk="1"],
+  [data-risk="1"] & {
     background: var(--risk-poor);
   }
 }
