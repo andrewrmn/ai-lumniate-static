@@ -171,6 +171,7 @@
     border-radius: 50%;
     background: $black;
     top: calc(50% - 6px);
+    left: calc(50% - 6px);
 
     &:before {
       content: attr(data-reference-score-rounded);

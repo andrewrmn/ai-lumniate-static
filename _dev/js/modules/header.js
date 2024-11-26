@@ -87,6 +87,27 @@ class Header {
 			});
 		});
 
+		function setMenuHeight() {
+			$('.desktop-navigation > ul > li.menu-item-has-children > .sub-menu').each(function() {
+				var subMenu = $(this);
+				var subMenuHeight = subMenu.outerHeight();
+				var menuPanel = subMenu.next('.js-menu-panel');
+				if (menuPanel.length === 0) {
+					subMenu.after('<div class="js-menu-panel"></div>');
+					menuPanel = subMenu.next('.js-menu-panel');
+				}
+				menuPanel.css('min-height', subMenuHeight + 'px');
+			});
+		}
+
+		$(document).ready(function() {
+			setMenuHeight();
+		});
+
+		$(window).resize(function() {
+			setMenuHeight();
+		});
+
 
 		$('.desktop-navigation > ul > li.menu-item-has-children').on('mouseenter', function(){
 			$(this).addClass('is-hovering');

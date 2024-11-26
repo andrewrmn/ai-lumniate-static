@@ -1,0 +1,44 @@
+// ---------------------------------------------------------------------
+//
+// ---------------------------------------------------------------------
+
+table.grade-cat-table {
+  table-layout: fixed;
+
+  thead th:first-child {
+    background: var(--risk-poor);
+    color: $black;
+  }
+
+  thead th:nth-child(2) {
+    background: var(--risk-fair);
+    color: $black;
+  }
+
+  thead th:nth-child(3) {
+    background: var(--risk-good);
+    color: $black;
+  }
+
+  thead th:nth-child(4) {
+    background: var(--risk-very-good);
+    color: $white;
+  }
+
+  thead th:nth-child(5) {
+    background: var(--risk-excellent);
+    color: $white;
+  }
+
+  tbody td + td {
+    border-left: 1px solid $border;
+  }
+
+  tbody td {
+    vertical-align: top;
+  }
+}
+
+// ----------------------------------------
+//
+// ----------------------------------------

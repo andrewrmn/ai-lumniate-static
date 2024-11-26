@@ -70,6 +70,48 @@
       </div>
     </article>
 
+    <div class="categories-by-grade my-3">
+      <h3>Categories by grade</h3>
+
+      <div class="sut-results-reference">
+        <div>
+          <div class="sut-results-reference__line">
+            <div class="ref" data-reference-score-rounded="10"></div>
+          </div>
+          <div class="sut-results-reference__legend">
+            <div>Lower than the reference model</div>
+            <div>Reference model</div>
+            <div>Higher than the reference model</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrap mt-1">
+        <div>
+          <table class="grade-cat-table" id="js-grade-table">
+            <thead>
+              <tr>
+                <th>Poor</th>
+                <th>Fair</th>
+                <th>Good</th>
+                <th>Very Good</th>
+                <th>Excellent</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>None</td>
+              <td>None</td>
+              <td>None</td>
+              <td>None</td>
+              <td>None</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
 
     <article class="sut-result my-3" data-overall-rating="">
       <div class="sut-result-scale">
@@ -81,7 +123,7 @@
       </div>
 
       <div class="sut-result-results">
-        <p>Hazard 1</p>
+        <p class="js-sut-title">Hazard 1</p>
         <div class="sut-result-results__gradient">
           <div class="sut-result-results__risk-range js-range-gradient" data-risk-upper="4" data-risk-estimate=".08" data-risk-lower=".02">
           </div>
@@ -111,6 +153,8 @@
       </div>
     </article>
 
+
+
     <article class="sut-result my-3" data-overall-rating="">
       <div class="sut-result-scale">
         <div>Poor</div>
@@ -121,7 +165,127 @@
       </div>
 
       <div class="sut-result-results">
-        <p>Hazard 2</p>
+        <p class="js-sut-title">Hazard 2</p>
+        <div class="sut-result-results__gradient">
+          <div class="sut-result-results__risk-range js-range-gradient" data-risk-upper="68" data-risk-estimate="60" data-risk-lower="24">
+          </div>
+        </div>
+      </div>
+
+      <div class="sut-results-reference">
+        <p>Violations %</p>
+        <div>
+          <div class="sut-results-reference__scores">
+            <div>100</div>
+            <div>30</div>
+            <div>15</div>
+            <div>5</div>
+            <div>0.1</div>
+            <div>0</div>
+          </div>
+          <div class="sut-results-reference__line">
+            <div class="ref" data-reference-score="10"></div>
+          </div>
+          <div class="sut-results-reference__legend">
+            <div>Lower than the reference model</div>
+            <div></div>
+            <div>Higher than the reference model</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="sut-result my-3" data-overall-rating="">
+      <div class="sut-result-scale">
+        <div>Poor</div>
+        <div>Fair</div>
+        <div>Good</div>
+        <div>Very Good</div>
+        <div>Excellent</div>
+      </div>
+
+      <div class="sut-result-results">
+        <p class="js-sut-title">Hazard 3</p>
+        <div class="sut-result-results__gradient">
+          <div class="sut-result-results__risk-range js-range-gradient" data-risk-upper="5" data-risk-estimate=".2" data-risk-lower="0">
+          </div>
+        </div>
+      </div>
+
+      <div class="sut-results-reference">
+        <p>Violations %</p>
+        <div>
+          <div class="sut-results-reference__scores">
+            <div>100</div>
+            <div>30</div>
+            <div>15</div>
+            <div>5</div>
+            <div>0.1</div>
+            <div>0</div>
+          </div>
+          <div class="sut-results-reference__line">
+            <div class="ref" data-reference-score="10"></div>
+          </div>
+          <div class="sut-results-reference__legend">
+            <div>Lower than the reference model</div>
+            <div></div>
+            <div>Higher than the reference model</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="sut-result my-3" data-overall-rating="">
+      <div class="sut-result-scale">
+        <div>Poor</div>
+        <div>Fair</div>
+        <div>Good</div>
+        <div>Very Good</div>
+        <div>Excellent</div>
+      </div>
+
+      <div class="sut-result-results">
+        <p class="js-sut-title">Hazard 4</p>
+        <div class="sut-result-results__gradient">
+          <div class="sut-result-results__risk-range js-range-gradient" data-risk-upper="12" data-risk-estimate=".9" data-risk-lower=".1">
+          </div>
+        </div>
+      </div>
+
+      <div class="sut-results-reference">
+        <p>Violations %</p>
+        <div>
+          <div class="sut-results-reference__scores">
+            <div>100</div>
+            <div>30</div>
+            <div>15</div>
+            <div>5</div>
+            <div>0.1</div>
+            <div>0</div>
+          </div>
+          <div class="sut-results-reference__line">
+            <div class="ref" data-reference-score="4"></div>
+          </div>
+          <div class="sut-results-reference__legend">
+            <div>Lower than the reference model</div>
+            <div></div>
+            <div>Higher than the reference model</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="sut-result my-3" data-overall-rating="">
+      <div class="sut-result-scale">
+        <div>Poor</div>
+        <div>Fair</div>
+        <div>Good</div>
+        <div>Very Good</div>
+        <div>Excellent</div>
+      </div>
+
+      <div class="sut-result-results">
+        <p class="js-sut-title">Hazard 5</p>
         <div class="sut-result-results__gradient">
           <div class="sut-result-results__risk-range js-range-gradient" data-risk-upper="68" data-risk-estimate="60" data-risk-lower="24">
           </div>
@@ -315,8 +479,8 @@
       // 2. Handle Reference Point
       if (refElement) {
         const referenceScore = parseFloat(refElement.dataset.referenceScore);
-        const refPosition = calculatePosition(referenceScore);
-        refElement.style.left = `${refPosition}%`;
+        // const refPosition = calculatePosition(referenceScore);
+        // refElement.style.left = `${refPosition}%`;
 
         // Add rounded score as a separate attribute
         const roundedScore = Math.round(referenceScore * 10) / 10;
@@ -342,6 +506,46 @@
 
       const overallRating = determineGrade(riskEstimate);
       result.setAttribute('data-overall-rating', overallRating);
+
+      // Skip the featured result
+      if (!result.classList.contains('sut-result--featured')) {
+        // Add the overall rating to the correct table column
+        const gradeTable = document.getElementById('js-grade-table');
+
+        if (gradeTable) {
+          const tbody = gradeTable.querySelector('tbody');
+          const columns = {
+            'Poor': 0,
+            'Fair': 1,
+            'Good': 2,
+            'Very Good': 3,
+            'Excellent': 4,
+          };
+
+          // Find the correct column index for the grade
+          const columnIndex = columns[overallRating];
+          if (columnIndex !== undefined) {
+            const cell = tbody.querySelector(`tr td:nth-child(${columnIndex + 1})`);
+
+            if (cell) {
+              // Remove "None" if it exists
+              if (cell.textContent.trim() === 'None') {
+                cell.textContent = '';
+              }
+
+              // Append the title from .js-sut-title to the column
+              const titleElement = result.querySelector('.js-sut-title');
+              if (titleElement) {
+                const newValue = document.createElement('div');
+                newValue.textContent = titleElement.textContent.trim();
+                cell.append(newValue);
+              }
+            }
+          }
+        }
+      }
+
+      // End SUT JS
     });
 
 
@@ -369,9 +573,6 @@
         overallSafetyRatingElement.textContent = 'Unknown'; // Fallback for unexpected values
       }
     }
-
-
-
   </script>
 
 <?php include('footer.php'); ?>
